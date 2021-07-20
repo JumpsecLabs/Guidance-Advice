@@ -2,6 +2,11 @@
 
 Recently, [some](https://twitter.com/jonasLyk/status/1417205166172950531) [Tweets](https://twitter.com/jeffmcjunkin/status/1417281315016122372)  seemed to evidence a number of Windows machines had badly set permissions that allowed any user to read the *SAM file*
 
+###### UPDATE
+This all applies to SECURTY and SYSTEM files too. Meaning an adversary with mimikatz and a shell in your internal network can trivally privesc AND steal credentials. 
+
+Our original script originally scanned the SAM file and confirmed if vulnerable or not to permissions mistake. We have put together an [additional script](wider_permissions_check.ps1) that will scan all three files. This is overkill, as permissions for the SAN file are likely the same for the SYSTEM and SECURITY files too. But it's still nice to have the script confirm this. 
+
 ## Why is this bad?
 
 The SAM file should definitely NOT be readable by every user. This file can be abused by adversaries to facilitate privilege escalation and password theft from users on a macine
@@ -43,6 +48,11 @@ select -expandproperty filesystemrights |
 select-string 'Read'){write-host "May be vulnerable: Arbitrary Read permissions for SAM file"
 }else { write-host "Does not seem to be vulnerable, SAM permissions are fine"}
 ```
+
+### Wider permissions check
+If you leverage the [alternate script](wider_permissions_check.ps1) that scans all three SAN, SYSTEM, and SECURITY files' permissions, then your outputs should look like this:
+![image](https://user-images.githubusercontent.com/49488209/126362385-9cca73f8-0a2a-4d53-9785-23eb09e62b3c.png)
+
 
 ### Defences
 As advised defences become avaliable, we will update this repo with guidance.
