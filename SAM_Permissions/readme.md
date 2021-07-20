@@ -5,7 +5,7 @@ Recently, [some](https://twitter.com/jonasLyk/status/1417205166172950531) [Tweet
 ###### UPDATE
 This all applies to SECURTY and SYSTEM files too. Meaning an adversary with mimikatz and a shell in your internal network can trivally privesc AND steal credentials. 
 
-Our original script originally scanned the SAM file and confirmed if vulnerable or not to permissions mistake. We have put together an [additional script](wider_permissions_check.ps1) that will scan all three files. This is overkill, as permissions for the SAN file are likely the same for the SYSTEM and SECURITY files too. But it's still nice to have the script confirm this. 
+Our original script originally scanned the SAM file and confirmed if vulnerable or not to permissions mistake. We have put together an [additional script](#Wider-permissions-check) that will scan all three files. This is overkill, as permissions for the SAM file are likely the same for the SYSTEM and SECURITY files too. But it's still nice to have the script confirm this. 
 
 ## Why is this bad?
 
