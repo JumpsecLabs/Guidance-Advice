@@ -33,5 +33,17 @@ powershell -exec bypass .\SAM_Permissions_Check.ps1
 ###### If Not Vulnerable
 ![Will highlight in GREEN](https://user-images.githubusercontent.com/49488209/126307983-5b1c1935-6982-4268-a136-675966f2ea87.png)
 
+### One-liner alternative
+If you just want a one-liner to chuck into a tool like Velociraptor then you can use this:
+```powershell
+$ErrorActionPreference = "SilentlyContinue" ;
+if ((get-acl C:\windows\system32\config\sam).Access | 
+? IdentityReference -match 'BUILTIN\\Users' | 
+select -expandproperty filesystemrights | 
+select-string 'Read'){write-host "May be vulnerable: Arbitrary Read permissions for SAM file"
+}else { write-host "Does not seem to be vulnerable, SAM permissions are fine"}
+```
+
 ### Defences
 As advised defences become avaliable, we will update this repo with guidance.
+
