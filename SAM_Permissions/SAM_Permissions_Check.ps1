@@ -19,9 +19,9 @@ write-host -foregroundcolor Magenta "`nRunning Script.......`n"
 	
 #Variables for OS version
 $Name = ([System.Net.Dns]::GetHostByName(($env:computerName))).Hostname
-$OS = gin | select -expandproperty OsName
-$Ver = gin | select -expandproperty WindowsVersion
-$Build= gin | select -expandproperty OSBuildNumber
+$OS = (gin).OsName
+$Ver = (gin).WindowsVersion
+$Build= (gin).OSBuildNumber
 
 #demarcate OS Info section
 Write-host "`n---OS Info---"
