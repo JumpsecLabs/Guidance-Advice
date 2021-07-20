@@ -44,7 +44,7 @@ write-host "`n---Vulnerability Results---"
 $items = @("SAM", "SECURITY", "SYSTEM")
 foreach ($item in $items) {
 	$ErrorActionPreference = "SilentlyContinue" ;
-if ((get-acl C:\windows\system32\config\sam).Access |
+if ((get-acl C:\windows\system32\config\$item).Access |
 	? IdentityReference -match 'BUILTIN\\Users' | 
 	select -expandproperty filesystemrights | 
 	select-string 'Read')
