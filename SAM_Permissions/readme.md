@@ -48,6 +48,8 @@ select -expandproperty filesystemrights |
 select-string 'Read'){write-host "May be vulnerable: Arbitrary Read permissions for SAM file"
 }else { write-host "Does not seem to be vulnerable, SAM permissions are fine"}
 ```
+![image](https://user-images.githubusercontent.com/49488209/126365217-d0915956-d1c1-4223-9521-2e82e6290e3d.png)
+
 
 ### Wider permissions check
 If you leverage the [alternate script](wider_permissions_check.ps1) that scans all three SAN, SYSTEM, and SECURITY files' permissions, then your outputs should look like this:
