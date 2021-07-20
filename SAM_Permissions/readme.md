@@ -12,6 +12,21 @@ Great question! We wrote a [short script](SAM_Permissions_Check.ps1) that will h
 
 Please run the [script](SAM_Permissions_Check.ps1) as Admin.
 
+### Usage
+You can pull the script via `invoke-webrequest`, or just copy and paste it if your environment doesn't allow scripts to be pulled from the internet. 
+```powershell
+ Invoke-WebRequest -URI https://raw.githubusercontent.com/JumpsecLabs/Guidance-Advice/main/SAM_Permissions/SAM_Permissions_Check.ps1 -usebasicparsing
+```
+
+And execute with
+```powershell
+.\SAM_Permissions_Check.ps1
+
+#if you have permissions errors, try:
+Unblock-File -path C:\path\to\SAM_Permissions_Check.ps1
+powershell -exec bypass .\SAM_Permissions_Check.ps1
+```
+
 ###### If Vulnerable
 ![Will highlight in RED](https://user-images.githubusercontent.com/49488209/126307912-1074a0e7-3228-4633-be1f-cc4374933980.png)
 
