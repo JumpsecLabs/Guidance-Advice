@@ -52,7 +52,7 @@ select-string 'Read'){write-host "May be vulnerable: Arbitrary Read permissions 
 
 
 ### Wider permissions check
-If you leverage the [alternate script](wider_permissions_check.ps1) that scans all three SAN, SYSTEM, and SECURITY files' permissions, then your outputs should look like this:
+If you leverage the [alternate script](wider_permissions_check.ps1) that scans all three SAM, SYSTEM, and SECURITY files' permissions, then your outputs should look like this:
 ![image](https://user-images.githubusercontent.com/49488209/126362385-9cca73f8-0a2a-4d53-9785-23eb09e62b3c.png)
 
 
