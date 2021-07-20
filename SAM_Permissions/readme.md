@@ -1,10 +1,10 @@
 # SAM bad read permissions
 
-We saw [some](https://twitter.com/jonasLyk/status/1417205166172950531) [Tweets](https://twitter.com/jeffmcjunkin/status/1417281315016122372) that seemed to evidence a number of Windows machines had badly set permissions that allowed any user to read the *SAM file*
+Recently, [some](https://twitter.com/jonasLyk/status/1417205166172950531) [Tweets](https://twitter.com/jeffmcjunkin/status/1417281315016122372)  seemed to evidence a number of Windows machines had badly set permissions that allowed any user to read the *SAM file*
 
 ## Why is this bad?
 
-The SAM file should definitely NOT be readable by every user. This file can be abused by adversaries to facilitate privilege escalation and password theft of a macine
+The SAM file should definitely NOT be readable by every user. This file can be abused by adversaries to facilitate privilege escalation and password theft from users on a macine
 
 ## How can I check if I am vulnerable?
 
