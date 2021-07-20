@@ -9,7 +9,9 @@ Our original script originally scanned the SAM file and confirmed if vulnerable 
 
 ## Why is this bad?
 
-The SAM file should definitely NOT be readable by every user. This file can be abused by adversaries to facilitate privilege escalation and password theft from users on a macine
+The SAM file should definitely NOT be readable by every user. This file can be abused by adversaries to facilitate privilege escalation and password theft from users on a macine.
+
+You can read more about [the dangerous details behind this misconfiguration](https://www.kb.cert.org/vuls/id/506989)
 
 ## How can I check if I am vulnerable?
 
