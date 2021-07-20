@@ -15,7 +15,7 @@ Please run the [script](SAM_Permissions_Check.ps1) as Admin.
 ### Usage
 You can pull the script via `invoke-webrequest`, or just copy and paste it if your environment doesn't allow scripts to be pulled from the internet. 
 ```powershell
- Invoke-WebRequest -URI https://raw.githubusercontent.com/JumpsecLabs/Guidance-Advice/main/SAM_Permissions/SAM_Permissions_Check.ps1 -usebasicparsing
+ Invoke-WebRequest -URI https://raw.githubusercontent.com/JumpsecLabs/Guidance-Advice/main/SAM_Permissions/SAM_Permissions_Check.ps1 -OutFile ./SAM_Permissions_Check.ps1  -usebasicparsing
 ```
 
 And execute with
