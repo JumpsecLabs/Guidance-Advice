@@ -1,6 +1,6 @@
 # SAM bad read permissions
 
-There were [some](https://twitter.com/jonasLyk/status/1417205166172950531) [Tweets](https://twitter.com/jeffmcjunkin/status/1417281315016122372) that we saw Monday night. In these tweets, there seemed to be evidence that a number of Windows machines had badly set permissions that allowed any user to read the SAM file
+We saw [some](https://twitter.com/jonasLyk/status/1417205166172950531) [Tweets](https://twitter.com/jeffmcjunkin/status/1417281315016122372) that seemed to evidence a number of Windows machines had badly set permissions that allowed any user to read the *SAM file*
 
 ## Why is this bad?
 
