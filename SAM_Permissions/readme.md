@@ -15,7 +15,7 @@ You can read more about [the dangerous details behind this misconfiguration](htt
 
 ## How can I check if I am vulnerable?
 
-Great question! We wrote a [short script](SAM_Permissions_Check.ps1) that will help confirm or deny if your SAM file has bad permissions and therefore if your machine is vulnerable or not to this.
+Great question! We wrote a [short script](SAM_Permissions_Check.ps1) that will help confirm or deny if your SAM, SECURITY, and SYSTEM files have bad permissions and therefore if your machine is vulnerable or not to this potential privesc.
 
 Please run the [script](SAM_Permissions_Check.ps1) as Admin.
 
@@ -25,7 +25,7 @@ You can pull the script via `invoke-webrequest`, or just copy and paste it if yo
  Invoke-WebRequest -URI https://raw.githubusercontent.com/JumpsecLabs/Guidance-Advice/main/SAM_Permissions/SAM_Permissions_Check.ps1 -OutFile ./SAM_Permissions_Check.ps1  -usebasicparsing
 ```
 
-And execute with
+And execute as Admin.
 ```powershell
 .\SAM_Permissions_Check.ps1
 
@@ -33,12 +33,9 @@ And execute with
 Unblock-File -path C:\path\to\SAM_Permissions_Check.ps1
 powershell -exec bypass .\SAM_Permissions_Check.ps1
 ```
+If the machine is vulnerable, expect the RED warning text; if the machine isn't vulnerable, expect the GREEN warning text.
 
-###### If Vulnerable
-![Will highlight in RED](https://user-images.githubusercontent.com/49488209/126307912-1074a0e7-3228-4633-be1f-cc4374933980.png)
-
-###### If Not Vulnerable
-![Will highlight in GREEN](https://user-images.githubusercontent.com/49488209/126307983-5b1c1935-6982-4268-a136-675966f2ea87.png)
+![image](https://user-images.githubusercontent.com/49488209/126362385-9cca73f8-0a2a-4d53-9785-23eb09e62b3c.png)
 
 ### One-liner alternative
 If you just want a one-liner to chuck into a tool like Velociraptor then you can use this:
@@ -52,12 +49,17 @@ select-string 'Read'){write-host "May be vulnerable: Arbitrary Read permissions 
 ```
 ![image](https://user-images.githubusercontent.com/49488209/126365217-d0915956-d1c1-4223-9521-2e82e6290e3d.png)
 
-
-### Wider permissions check
-If you leverage the [alternate script](wider_permissions_check.ps1) that scans all three SAM, SYSTEM, and SECURITY files' permissions, then your outputs should look like this:
-![image](https://user-images.githubusercontent.com/49488209/126362385-9cca73f8-0a2a-4d53-9785-23eb09e62b3c.png)
-
-
 ### Defences
-As advised defences become avaliable, we will update this repo with guidance.
+Latest workaround by [Microsoft can be found here](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36934). There are two portions to this workaround:
+* Change File Permissions - Easy
+* Remediate Volume Shadow Service - Complicated
 
+###### Change file permissions
+This can be easily done with the following command. It does not appear to have negative impact on the OS:
+```cmd
+icacls %windir%\system32\config\*.* /inheritance:e
+```
+###### Remediate VSS
+Changing this may present complications for your backup solutions. Please test this option on a control machine before attempting domain wide.
+
+[TrueSec](https://blog.truesec.com/2021/07/20/hivenightmare-a-k-a-serioussam-local-privilege-escalation-in-windows/) have good guidance on manipulating the VSS for defence
