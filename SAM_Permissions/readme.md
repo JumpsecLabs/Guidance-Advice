@@ -59,5 +59,16 @@ If you leverage the [alternate script](wider_permissions_check.ps1) that scans a
 
 
 ### Defences
-As advised defences become avaliable, we will update this repo with guidance.
+Latest workaround by [Microsoft can be found here](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36934). There are two portions to this workaround:
+* Change File Permissions - Easy
+* Remediate Volume Shadow Service - Complicated
 
+###### Change file permissions
+This can be easily done with the following command. It does not appear to have negative impact on the OS:
+```cmd
+icacls %windir%\system32\config\*.* /inheritance:e
+```
+###### Remediate VSS
+Changing this may present complications for your backup solutions. Please test this option on a control machine before attempting domain wide.
+
+[TrueSec](https://blog.truesec.com/2021/07/20/hivenightmare-a-k-a-serioussam-local-privilege-escalation-in-windows/) have good guidance on manipulating the VSS for defence
