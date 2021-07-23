@@ -35,7 +35,15 @@ powershell -exec bypass .\SAM_Permissions_Check.ps1
 ```
 If the machine is vulnerable, expect the RED warning text; if the machine isn't vulnerable, expect the GREEN warning text.
 
-![image](https://user-images.githubusercontent.com/49488209/126362385-9cca73f8-0a2a-4d53-9785-23eb09e62b3c.png)
+![vuln](https://user-images.githubusercontent.com/44196051/126726994-3d004065-9f7a-449f-bbcb-f1dd6ac02241.png)
+
+![safe](https://user-images.githubusercontent.com/44196051/126726996-6cba88a8-a08a-4837-ad90-2a88cd3cf934.png)
+
+##### Optional extra if you're vulnerable
+We added the option if you are vulnerable to collect OS version and build details, to contribute to data gathering that is occuring on Twitter and other places. This aims to understand which OS versions exactly are vulnerable
+
+![OS](https://user-images.githubusercontent.com/44196051/126727076-9aa48ae4-f227-4049-81de-7415d3e9e6b4.png)
+
 
 ### One-liner alternative
 If you just want a one-liner to chuck into a tool like Velociraptor then you can use this:
