@@ -7,7 +7,6 @@ Meta
 #>
 
 #setup
-
 #Ensure errors don't ruin anything for us
 $ErrorActionPreference = "SilentlyContinue"
 #collect FQDN variable
