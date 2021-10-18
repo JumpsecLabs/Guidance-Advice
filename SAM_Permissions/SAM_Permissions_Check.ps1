@@ -90,7 +90,7 @@ function main {
     #Print basic script info
     Write-host "`nThis script will confirm if machine is vulnerable to " -NoNewline
     write-host -foregroundcolor Magenta "CVE-2021-36934"
-    write-host "Where the SAM, SECURITY, SYSTEM files can be read by any user due to a vulnissions misconfiguration`n"
+    write-host "Where the SAM, SECURITY, SYSTEM files can be read by any user due to a vulnerable permissions misconfiguration`n"
     sleep 1.5
     #Determine vulnerability
     vulnerable_perm
